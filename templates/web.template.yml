@@ -17,7 +17,7 @@ env:
 
 
 params:
-  version: tests-passed
+  version: kun-version
 
   home: /var/www/discourse
   upload_size: 10m
@@ -88,10 +88,13 @@ run:
       cmd:
         - git reset --hard
         - git clean -f
-        - git remote set-branches --add origin master
-        - git pull
-        - git fetch origin $version
-        - git checkout $version
+        - git remote add kun-stream https://github.com/kun-yu-tsai/discourse.git
+        - git fetch kun-stream $version
+        - git checkout -b $version kun-stream/$version
+#         - git remote set-branches --add origin master
+#         - git pull
+#         - git fetch origin $version
+#         - git checkout $version
         - mkdir -p tmp
         - chown discourse:www-data tmp
         - mkdir -p tmp/pids
