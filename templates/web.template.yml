@@ -17,7 +17,7 @@ env:
 
 
 params:
-  version: kun-version
+  version: kun-stream
 
   home: /var/www/discourse
   upload_size: 10m
@@ -88,9 +88,9 @@ run:
       cmd:
         - git reset --hard
         - git clean -f
-        - git remote add kun-stream https://github.com/kun-yu-tsai/discourse.git
-        - git fetch kun-stream $version
-        - git checkout -b $version kun-stream/$version
+        - git remote add kun-discourse-docker https://github.com/kun-yu-tsai/discourse.git
+        - git fetch kun-discourse-docker $version
+        - git checkout -b kun-discourse-branch kun-discourse-docker/$version
 #         - git remote set-branches --add origin master
 #         - git pull
 #         - git fetch origin $version
